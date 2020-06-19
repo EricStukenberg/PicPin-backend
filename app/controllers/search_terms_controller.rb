@@ -35,6 +35,7 @@ class SearchTermsController < ApplicationController
     end
   end
 
+  
   # DELETE /search_terms/1
   def destroy
     @search_term.destroy

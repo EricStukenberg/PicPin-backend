@@ -7,3 +7,4 @@ Unsplash.configure do |config|
     # optional:
     # config.logger = MyCustomLogger.new
   end
+  
