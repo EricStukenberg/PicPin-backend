@@ -11,7 +11,6 @@ class AuthorizeApiRequest
       user
     end
   
-    
     private
   
     attr_reader :headers
