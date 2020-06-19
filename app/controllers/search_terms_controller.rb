@@ -14,8 +14,10 @@ class SearchTermsController < ApplicationController
   end
 
   # POST /search_terms
-  def create
-    @search_term = SearchTerm.new(search_term_params)
+  def search
+    search_results = Unsplash::Photo.search(params[:term])
+
+    @search_term = SearchTerm.new(term:params["term"], result:search_results)
 
     if @search_term.save
       render json: @search_term, status: :created, location: @search_term
@@ -38,6 +40,10 @@ class SearchTermsController < ApplicationController
     @search_term.destroy
   end
 
+  # def search 
+  #   term = parm
+  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_search_term
@@ -46,6 +52,6 @@ class SearchTermsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def search_term_params
-      params.require(:search_term).permit(:term, :result)
+      params.require(:search_term).permit(:term)
     end
 end
