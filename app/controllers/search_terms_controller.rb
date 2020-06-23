@@ -15,6 +15,7 @@ class SearchTermsController < ApplicationController
 
   # POST /search_terms
   def search
+    
     search_results = Unsplash::Photo.search(params[:term])
 
     @search_term = SearchTerm.new(term:params["term"], result:search_results)
@@ -35,7 +36,7 @@ class SearchTermsController < ApplicationController
     end
   end
 
-  
+
   # DELETE /search_terms/1
   def destroy
     @search_term.destroy
