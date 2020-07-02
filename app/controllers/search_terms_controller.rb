@@ -15,16 +15,16 @@ class SearchTermsController < ApplicationController
 
   # POST /search_terms
   def search
-    
+
     search_results = Unsplash::Photo.search(params[:term])
+    render json: search_results
+    # @search_term = SearchTerm.new(term:params["term"], result:search_results)
 
-    @search_term = SearchTerm.new(term:params["term"], result:search_results)
-
-    if @search_term.save
-      render json: @search_term, status: :created, location: @search_term
-    else
-      render json: @search_term.errors, status: :unprocessable_entity
-    end
+    # if @search_term.save
+    #   render json: @search_term, status: :created, location: @search_term
+    # else
+    #   render json: @search_term.errors, status: :unprocessable_entity
+    # end
   end
 
   # PATCH/PUT /search_terms/1
