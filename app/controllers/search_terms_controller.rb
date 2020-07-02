@@ -27,6 +27,10 @@ class SearchTermsController < ApplicationController
     # end
   end
 
+  def random 
+    render json: Unsplash::Photo.search("random&count=30")
+  end
+
   # PATCH/PUT /search_terms/1
   def update
     if @search_term.update(search_term_params)

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/auth', to: 'auth#create'
   get '/current_user', to: 'auth#show'
   post 'search_terms/search', to: 'search_terms#search'
+  post 'search_terms/random', to: 'search_terms#random'
+
   resources :search_terms
   resources :users
 
