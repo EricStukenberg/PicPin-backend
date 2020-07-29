@@ -14,7 +14,11 @@ class SearchTermsController < ApplicationController
   end
 
   def random 
-    render json: Unsplash::Photo.search("random&count=30")
+    pics =[]
+    for i in 0 ..15
+      pics <<  Unsplash::Photo.random
+    end
+    render json: pics
   end
 
 
